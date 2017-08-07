@@ -15,7 +15,7 @@ This surprises me.
 
 
 
-ps for NowTV, ** upgrade your security. At least put in a captcha.** 
+ps for NowTV, **upgrade your security. At least put in a captcha.** 
 
 
 **script made for education purposes**
